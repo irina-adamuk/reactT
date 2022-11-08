@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Button } from "./FormClass/Button";
-import { Input } from "./FormClass/Input";
+import { Button } from "./Button";
+import { Input } from "./Input";
 
 export class Form extends Component {
   // constructor(props){
@@ -23,6 +23,13 @@ export class Form extends Component {
   handleChange = (event) => {
     this.setState({ value: event.target.value });
   };
+
+  componentDidMount() {
+    console.log("ClsssForm did mount!");
+  }
+  componentDidUpdate() {
+    console.log('ClassForm did update!')
+  }
   render() {
     return (
       <>
@@ -33,9 +40,9 @@ export class Form extends Component {
             ))}
           </ul>
         )}
-
-        <Input change={this.handleChange} value={this.state.value} />
-        <Button name={this.state.name} click={this.handleClick} />
+        
+          <Input change={this.handleChange} value={this.state.value} />
+          <Button name={this.state.name} click={this.handleClick} />
 
         <button onClick={() => this.setState({ visible: !this.state.visible })}>
           {this.state.visible ? "hide" : "show"}
