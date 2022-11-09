@@ -1,18 +1,15 @@
+import { Button } from './Button';
+import { Input } from './Input';
 import React, { useState } from 'react';
-import { Button } from "./Button";
-import { Input } from "./Input";
 
 export const Form = () => {
-
-  const [name, setName] = useState('click');
   const [value, setValue] = useState('');
   const [messages, setMessages] = useState([]);
   const [visible, setVisible] = useState(true);
 
   const handleClick = () => {
-    setMessages( [...messages, value]);
-    setValue("");
-
+    setMessages([...messages, value]);
+    setValue('');
   };
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -22,8 +19,8 @@ export const Form = () => {
     <>
       {visible && (
         <ul>
-          {messages.map((message) => (
-            <li>{message}</li>
+          {messages.map((message, idx) => (
+            <li key={idx}>{message}</li>
           ))}
         </ul>
       )}
@@ -31,8 +28,8 @@ export const Form = () => {
       <Input change={handleChange} value={value} />
       <Button name={name} click={handleClick} />
 
-      <button onClick={() => setVisible(!visible )}>
-        {visible ? "hide" : "show"}
+      <button onClick={() => setVisible(!visible)}>
+        {visible ? 'hide' : 'show'}
       </button>
     </>
   );
